@@ -1,15 +1,11 @@
 # Java Game of Life
 
 ## 📌 Overview  
-This project is a Java implementation of a **Game of Life**, developed as part of the **Design Patterns** course in the third year of a Computer Science degree at **Université du Mans**. The program offers multiple simulation modes and follows object-oriented design principles.
+This project is a Java implementation of the **Game of Life**, developed as part of the **Design Patterns** course in the third year of a Computer Science degree at **Université du Mans**. The program offers multiple simulation modes and follows object-oriented design principles, applying various design patterns to enhance modularity and extensibility.
 
 ## 🎮 Features  
-- 🏗 **Modular Design**: Uses well-structured design patterns.  
-- 🎨 **Multiple Modes**: Different game variations available.  
-- ⏸ **Pause Button**: Allows stopping and resuming the simulation.  
-- ⏭ **Next Generation Button**: Manually step through generations.  
-- ⏳ **Speed Slider**: Adjust the simulation speed dynamically.  
-- 🔽 **Mode Selection**: Choose between different rule sets:  
+- 🏗 **Modular Design**: Utilizes well-structured design patterns for flexibility.  
+- 🎨 **Multiple Modes**: Various game rule sets available:  
   - Conway  
   - LifeWithoutDeath  
   - HighLife  
@@ -17,9 +13,25 @@ This project is a Java implementation of a **Game of Life**, developed as part o
   - Chaos  
   - Diamoeba  
   - Replicator  
+- ⏸ **Pause/Resume Button**: Allows stopping and resuming the simulation at any point.  
+- ⏭ **Next Generation Button**: Advances the simulation by one generation at a time, allowing for manual step-through.  
+- ⏳ **Speed Slider**: Adjusts the simulation speed dynamically for real-time control.  
+- 🔽 **Mode Selection**: Choose between different rule sets for the game:  
+  - Classical  
+  - High Life  
+  - Day and Night  
+  - Diamoeba  
+  - Replicator  
+  - Life Without Death  
+  - Chaos  
 - 🎲 **Pattern Selection**: Initialize the grid with predefined patterns:  
   - Glider  
   - Gosper Glider Gun  
+  - Glider  
+  - Cannon  
+  - Labyrinth (Replicator)  
+  - Explosive (Replicator)  
+  - Replicator
 
 ## 🛠 Installation & Usage  
 ### 🔹 Prerequisites  
@@ -51,8 +63,10 @@ JavaGameOfLife/
 ```
 
 ## 🏗 Design Patterns Used  
-- **Observer / Observable**: Manages event-driven updates between components.  
-- **Visitor**: Allows new operations to be added to existing structures without modifying them.  
+
+- **Observer / Observable**: Manages event-driven updates between components.
+- **Visitor**: Allows new operations (game modes) to be added to existing structures without modifying them.
+- **Singleton**: Ensures that each cell is instantiated only once and is shared throughout the game
 
 ---
 
