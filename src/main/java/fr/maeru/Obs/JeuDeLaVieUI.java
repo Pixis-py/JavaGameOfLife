@@ -26,11 +26,19 @@ public class JeuDeLaVieUI extends JFrame implements Observateur {
     private JComboBox<String> modeDeJeuComboBox;
     private GridPanel gridPanel;
 
-    private String[] patternsDisponibles = {"Choisir un motif", "Planeur", "Canon", "Labyrinthe"};
+    private String[] patternsDisponibles = {"Pattern", "Planeur", "Canon", "Labyrinthe (replicator)", "Explosif (replicator)", "Replicator"};
     private JComboBox<String> patternComboBox;
 
     public JeuDeLaVieUI(JeuDeLaVie jeu) {
         super("Jeu De La Vie");
+
+        try {
+            UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+
         this.jeu = jeu;
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(new BorderLayout());
@@ -44,6 +52,7 @@ public class JeuDeLaVieUI extends JFrame implements Observateur {
         patternComboBox.setBackground(Color.BLACK);
         patternComboBox.setForeground(Color.WHITE);
         
+        
         patternComboBox.addActionListener(e -> {
             String selectedPattern = (String) patternComboBox.getSelectedItem();
             switch (selectedPattern) {
@@ -53,8 +62,14 @@ public class JeuDeLaVieUI extends JFrame implements Observateur {
                 case "Canon":
                     creerPatternCanon();
                     break;
-                case "Labyrinthe":
+                case "Labyrinthe (replicator)":
                     creerPatternLabyrinthe();
+                    break;
+                case "Explosif (replicator)":
+                    creerPatternExplosif();
+                    break;
+                case "Replicator":
+                    creerPatternReplicator();
                     break;
                 default:
                     break;
@@ -209,30 +224,88 @@ public class JeuDeLaVieUI extends JFrame implements Observateur {
             }
         }
     
-        // Définir le motif du canon de Gosper
-        int startX = jeu.getxMax() / 2 - 10;
-        int startY = jeu.getyMax() / 2 - 5;
+        // Coordonnées de départ du canon
+        int startX = 10; // Ajuste selon la taille de ta grille
+        int startY = 5;  // Ajuste selon la taille de ta grille
     
-        // Configure les cellules vivantes pour former le canon
-        jeu.setGrille(startX + 1, startY + 0, new Cellule(startX + 1, startY + 0, CelluleEtatVivant.getInstance()));
-        jeu.setGrille(startX + 1, startY + 1, new Cellule(startX + 1, startY + 1, CelluleEtatVivant.getInstance()));
-        jeu.setGrille(startX + 2, startY + 1, new Cellule(startX + 2, startY + 1, CelluleEtatVivant.getInstance()));
-        jeu.setGrille(startX + 1, startY + 2, new Cellule(startX + 1, startY + 2, CelluleEtatVivant.getInstance()));
-        jeu.setGrille(startX + 2, startY + 2, new Cellule(startX + 2, startY + 2, CelluleEtatVivant.getInstance()));
-        jeu.setGrille(startX + 3, startY + 2, new Cellule(startX + 3, startY + 2, CelluleEtatVivant.getInstance()));
-        jeu.setGrille(startX + 4, startY + 1, new Cellule(startX + 4, startY + 1, CelluleEtatVivant.getInstance()));
-        jeu.setGrille(startX + 5, startY + 1, new Cellule(startX + 5, startY + 1, CelluleEtatVivant.getInstance()));
-        
-        jeu.setGrille(startX + 0, startY + 3, new Cellule(startX + 0, startY + 3, CelluleEtatVivant.getInstance()));
-        jeu.setGrille(startX + 1, startY + 3, new Cellule(startX + 1, startY + 3, CelluleEtatVivant.getInstance()));
-        jeu.setGrille(startX + 2, startY + 3, new Cellule(startX + 2, startY + 3, CelluleEtatVivant.getInstance()));
-        jeu.setGrille(startX + 3, startY + 3, new Cellule(startX + 3, startY + 3, CelluleEtatVivant.getInstance()));
-        jeu.setGrille(startX + 4, startY + 3, new Cellule(startX + 4, startY + 3, CelluleEtatVivant.getInstance()));
-        jeu.setGrille(startX + 5, startY + 3, new Cellule(startX + 5, startY + 3, CelluleEtatVivant.getInstance()));
-        
-        jeu.setGrille(startX + 3, startY + 4, new Cellule(startX + 3, startY + 4, CelluleEtatVivant.getInstance()));
-        jeu.setGrille(startX + 3, startY + 5, new Cellule(startX + 3, startY + 5, CelluleEtatVivant.getInstance()));
-        
+        // Définition des cellules vivantes du canon de Gosper
+        int[][] pattern = {
+            {0, 4}, {0, 5}, {1, 4}, {1, 5},
+            {10, 4}, {10, 5}, {10, 6}, {11, 3}, {11, 7}, {12, 2}, {12, 8}, {13, 2}, {13, 8}, {14, 5}, {15, 3}, {15, 7},
+            {16, 4}, {16, 5}, {16, 6}, {17, 5},
+            {20, 2}, {20, 3}, {20, 4}, {21, 2}, {21, 3}, {21, 4}, {22, 1}, {22, 5}, {24, 0}, {24, 1}, {24, 5}, {24, 6},
+            {34, 2}, {34, 3}, {35, 2}, {35, 3}
+        };
+    
+        // Placer les cellules vivantes sur la grille
+        for (int[] cell : pattern) {
+            int x = startX + cell[0];
+            int y = startY + cell[1];
+            jeu.setGrille(x, y, new Cellule(x, y, CelluleEtatVivant.getInstance()));
+        }
+    
+        // Notifier l'affichage
+        actualise();
+    }
+    
+    private void creerPatternExplosif() {
+        // Réinitialiser la grille
+        for (int x = 0; x < jeu.getxMax(); x++) {
+            for (int y = 0; y < jeu.getyMax(); y++) {
+                jeu.setGrille(x, y, new Cellule(x, y, CelluleEtatMort.getInstance()));
+            }
+        }
+    
+        // Position de départ de l'explosion
+        int startX = jeu.getxMax() / 2;
+        int startY = jeu.getyMax() / 2;
+    
+        // Définir les cellules vivantes pour l'explosion
+        int[][] pattern = {
+            {0, 0}, {1, 0}, {-1, 0}, {0, 1}, {0, -1},  // Centre + voisins directs
+            {2, 0}, {-2, 0}, {0, 2}, {0, -2}, {1, 1}, {-1, -1}, {1, -1}, {-1, 1}, // Explosion
+            {3, 0}, {-3, 0}, {0, 3}, {0, -3}
+        };
+    
+        // Placer les cellules vivantes sur la grille
+        for (int[] cell : pattern) {
+            int x = startX + cell[0];
+            int y = startY + cell[1];
+            if (x >= 0 && x < jeu.getxMax() && y >= 0 && y < jeu.getyMax()) {
+                jeu.setGrille(x, y, new Cellule(x, y, CelluleEtatVivant.getInstance()));
+            }
+        }
+    
+        // Notifier l'affichage
+        actualise();
+    }
+    
+    private void creerPatternReplicator() {
+        // Réinitialiser la grille
+        for (int x = 0; x < jeu.getxMax(); x++) {
+            for (int y = 0; y < jeu.getyMax(); y++) {
+                jeu.setGrille(x, y, new Cellule(x, y, CelluleEtatMort.getInstance()));
+            }
+        }
+    
+        // Position de départ du replicator
+        int startX = jeu.getxMax() / 2;
+        int startY = jeu.getyMax() / 2;
+    
+        // Définir le pattern de Replicator
+        int[][] pattern = {
+            {0, 0}, {1, 1}, {2, 1}, {2, 0}, {1, -1}
+        };
+    
+        // Placer les cellules vivantes sur la grille
+        for (int[] cell : pattern) {
+            int x = startX + cell[0];
+            int y = startY + cell[1];
+            if (x >= 0 && x < jeu.getxMax() && y >= 0 && y < jeu.getyMax()) {
+                jeu.setGrille(x, y, new Cellule(x, y, CelluleEtatVivant.getInstance()));
+            }
+        }
+    
         // Notifier l'affichage
         actualise();
     }

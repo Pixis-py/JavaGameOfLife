@@ -14,10 +14,10 @@ public class VisiteurClassique extends Visiteur{
     public void visiterCelluleMorte(Cellule c) {
         if(c.nombreVoisinesVivantes(jeu) == 3){
             jeu.ajouterCommande(new CommandeVit(c));
-            System.out.println("Naissance : " + c.nombreVoisinesVivantes(jeu));
+            //System.out.println("Naissance : " + c.nombreVoisinesVivantes(jeu));
         } else{
             if(c.nombreVoisinesVivantes(jeu) > 0){
-            System.out.println("IDLE : " + c.nombreVoisinesVivantes(jeu));
+            //System.out.println("IDLE : " + c.nombreVoisinesVivantes(jeu));
             }
         }
     }

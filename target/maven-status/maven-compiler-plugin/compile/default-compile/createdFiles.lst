@@ -6,14 +6,14 @@ fr/maeru/Visiteur/VisiteurDiamoeba.class
 fr/maeru/Visiteur/VisiteurDayAndNight.class
 fr/maeru/Obs/JeuDeLaVieUI$2.class
 fr/maeru/Visiteur/VisiteurChaos.class
-fr/maeru/Cellule/CelluleEtatMort.class
 fr/maeru/Commande/Commande.class
 fr/maeru/App.class
+fr/maeru/Cellule/CelluleEtatMort.class
 fr/maeru/Visiteur/VisiteurReplicator.class
 fr/maeru/Commande/CommandeVit.class
 fr/maeru/Visiteur/VisiteurHighLife.class
-fr/maeru/Cellule/Cellule.class
 fr/maeru/Obs/JeuDeLaVieUI$5.class
+fr/maeru/Cellule/Cellule.class
 fr/maeru/Cellule/CelluleEtat.class
 fr/maeru/Obs/JeuDeLaVieUI$GridPanel.class
 fr/maeru/Obs/JeuDeLaVieUI.class
