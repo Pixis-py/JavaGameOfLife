@@ -1,0 +1,8 @@
+touch .gitignore
+echo "target/" >> .gitignore
+echo ".idea/" >> .gitignore
+echo "*.iml" >> .gitignore
+echo "pom.xml.tag" >> .gitignore
+git add .gitignore
+git commit -m "Ajout du .gitignore"
+git push origin main
