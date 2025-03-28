@@ -20,18 +20,18 @@ public class App
      * Elle crée les instances nécessaires du jeu, de l'interface utilisateur et des observateurs,
      * puis démarre une boucle infinie pour calculer les générations suivantes.
      * 
-     * @param args Les arguments de la ligne de commande (non utilisés dans cette application).
-     * @throws InterruptedException Si le thread est interrompu pendant le sommeil.
+     * @param args Les arguments.
+     * @throws InterruptedException Si le thread est interrompu pendant le sleep.
      */
     public static void main( String[] args ) throws InterruptedException {
-        JeuDeLaVie jeu = new JeuDeLaVie(100, 100);
+        JeuDeLaVie jeu = new JeuDeLaVie(125, 125);
         JeuDeLaVieUI jeuUi = new JeuDeLaVieUI(jeu);
         ObservateurConsole consObs = new ObservateurConsole(jeu);
         
         jeu.attacheObservateur(jeuUi);
         jeu.attacheObservateur(consObs);
         
-        Thread.sleep(5000);
+        //Thread.sleep(5000); // Utilisé en test pour avoir un temps de pause au lancement du jeu
         
         while(true){
             jeu.calculerGenerationSuivante();

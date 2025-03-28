@@ -28,8 +28,6 @@ public class CommandeMeurt extends Commande {
 
     /**
      * Exécute l'action "meurt" sur la cellule spécifiée.
-     * Cette méthode déclenche l'action de mort de la cellule, permettant ainsi
-     * à la cellule de passer à l'état mort.
      */
     public void executer() {
         cel.meurt();

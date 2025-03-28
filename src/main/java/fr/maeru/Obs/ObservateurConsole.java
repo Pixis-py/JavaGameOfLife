@@ -12,8 +12,8 @@ import fr.maeru.JeuDeLaVie;
  */
 public class ObservateurConsole implements Observateur {
     
-    private JeuDeLaVie jeu; // Référence au jeu à observer
-    private int generation; // Compteur de génération actuel
+    private JeuDeLaVie jeu;
+    private int generation;
     
     /**
      * Constructeur de l'observateur console.
@@ -22,19 +22,19 @@ public class ObservateurConsole implements Observateur {
      */
     public ObservateurConsole(JeuDeLaVie jeu) {
         this.jeu = jeu;
-        this.generation = 0; // Initialisation de la génération à 0
+        this.generation = 0;
     }
 
     /**
-     * Actualise l'affichage de la génération actuelle et du nombre de cellules vivantes.
+     * Actualise l'affichage de la génération actuelle et du nombre de cellules vivantes dans le terminal.
      * Cette méthode est appelée chaque fois qu'une nouvelle génération est calculée.
      */
     @Override
     public void actualise() {
-        generation++; // Incrémentation du compteur de génération
-        int nombreCellulesVivantes = compterCellulesVivantes(); // Comptage des cellules vivantes
-        System.out.println("Génération : " + generation); // Affichage de la génération
-        System.out.println("Cellules vivantes : " + nombreCellulesVivantes); // Affichage du nombre de cellules vivantes
+        generation++;
+        int nombreCellulesVivantes = compterCellulesVivantes();
+        System.out.println("Génération : " + generation);
+        System.out.println("Cellules vivantes : " + nombreCellulesVivantes);
     }
 
     /**
@@ -46,7 +46,6 @@ public class ObservateurConsole implements Observateur {
         int count = 0;
         for (int x = 0; x < jeu.getxMax(); x++) {
             for (int y = 0; y < jeu.getyMax(); y++) {
-                // Si la cellule est vivante, on incrémente le compteur
                 if (jeu.getGrilleXY(x, y).estVivante()) {
                     count++;
                 }

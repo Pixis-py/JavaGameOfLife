@@ -6,7 +6,7 @@ import fr.maeru.Visiteur.*;
  * Représente l'état "mort" d'une cellule dans le cadre du jeu de la vie.
  * Cette classe implémente l'interface {@link CelluleEtat} et définit les comportements
  * spécifiques lorsque la cellule est morte.
- * Elle suit le pattern **Singleton** pour garantir qu'il n'existe qu'une seule instance de cet état.
+ * Elle suit le pattern Singleton pour garantir qu'il n'existe qu'une seule instance de cet état.
  * 
  * @author Maelig Pesantez
  * @version 1.0
@@ -14,7 +14,7 @@ import fr.maeru.Visiteur.*;
 public class CelluleEtatMort implements CelluleEtat {
 
     /**
-     * Instance unique de l'état "mort" (Singleton).
+     * Instance unique de l'état "mort".
      */
     private static CelluleEtatMort inst = null;
 
@@ -25,7 +25,7 @@ public class CelluleEtatMort implements CelluleEtat {
 
     /**
      * Permet à une cellule morte de devenir vivante.
-     * Cette méthode retourne l'état "vivant" de la cellule en utilisant le **Singleton** de {@link CelluleEtatVivant}.
+     * Cette méthode retourne l'état "vivant" de la cellule en utilisant le Singleton de {@link CelluleEtatVivant}.
      * 
      * @return L'état "vivant" de la cellule.
      */
@@ -57,7 +57,7 @@ public class CelluleEtatMort implements CelluleEtat {
     }
 
     /**
-     * Retourne l'instance unique de l'état "mort" (Singleton).
+     * Retourne l'instance unique de l'état "mort".
      * Si l'instance n'a pas encore été créée, elle est instanciée une seule fois.
      * 
      * @return L'instance unique de l'état "mort".
@@ -71,7 +71,7 @@ public class CelluleEtatMort implements CelluleEtat {
 
     /**
      * Permet à un visiteur d'interagir avec la cellule en état "mort".
-     * Cette méthode fait appel au design pattern **Visitor** et invoque la méthode spécifique
+     * Cette méthode fait appel au design pattern Visitor et invoque la méthode spécifique
      * du visiteur pour l'état "mort" de la cellule.
      * 
      * @param v Le visiteur qui interagira avec la cellule.

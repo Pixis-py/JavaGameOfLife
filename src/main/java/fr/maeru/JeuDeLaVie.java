@@ -20,15 +20,21 @@ import java.lang.Math;
  */
 public class JeuDeLaVie implements Observable {
 
-    private Cellule[][] grille;  // Grille représentant l'état des cellules
-    private Integer xMax;  // Largeur de la grille
-    private Integer yMax;  // Hauteur de la grille
-    private List<Observateur> obs = new ArrayList<>();  // Liste des observateurs
-    private List<Commande> commandes = new ArrayList<>();  // Liste des commandes à exécuter
-    private Visiteur v;  // Visiteur utilisé pour appliquer des actions sur les cellules
-    private int speed = 250;  // Vitesse d'exécution du jeu
-    private boolean pause;  // Indique si le jeu est en pause
-    private boolean nextGen;  // Indique si la génération suivante doit être calculée
+    private Cellule[][] grille;
+
+    private Integer xMax;
+    private Integer yMax;
+
+    private List<Observateur> obs = new ArrayList<>();
+    private List<Commande> commandes = new ArrayList<>();
+
+    private Visiteur v;
+    private int speed = 250;
+
+    private boolean pause;
+    private boolean nextGen;
+
+     // ------------------------------------------- CONSTRUCTEUR -------------------------------------------
 
     /**
      * Constructeur de la classe {@link JeuDeLaVie}.
@@ -45,6 +51,8 @@ public class JeuDeLaVie implements Observable {
         this.nextGen = false;
         initialiseGrille();
     }
+
+     // ------------------------------------------- INIT -------------------------------------------
 
     /**
      * Initialise la grille en remplissant chaque cellule avec un état aléatoire (vivant ou mort).
@@ -63,6 +71,8 @@ public class JeuDeLaVie implements Observable {
             }
         }
     }
+
+    // ------------------------------------------- GETTER / SETTER -------------------------------------------
 
     /**
      * Retourne la largeur de la grille.
@@ -150,6 +160,44 @@ public class JeuDeLaVie implements Observable {
     }
 
     /**
+     * Définit la vitesse d'exécution du jeu.
+     * 
+     * @param speed La vitesse d'exécution.
+     */
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
+
+    /**
+     * Retourne la vitesse d'exécution du jeu.
+     * 
+     * @return La vitesse d'exécution.
+     */
+    public int getSpeed() {
+        return speed;
+    }
+
+    /**
+     * Retourne le visiteur actuel utilisé pour effectuer des actions sur les cellules.
+     * 
+     * @return Le visiteur actuel.
+     */
+    public Visiteur getV() {
+        return v;
+    }
+
+    /**
+     * Définit un nouveau visiteur pour effectuer des actions sur les cellules.
+     * 
+     * @param v Le visiteur à définir.
+     */
+    public void setV(Visiteur v) {
+        this.v = v;
+    }
+
+    // ------------------------------------------- GESTION LOGIQUE -------------------------------------------
+
+    /**
      * Attache un observateur à la liste des observateurs.
      * 
      * @param o L'observateur à attacher.
@@ -229,39 +277,4 @@ public class JeuDeLaVie implements Observable {
         }
     }
 
-    /**
-     * Définit la vitesse d'exécution du jeu.
-     * 
-     * @param speed La vitesse d'exécution.
-     */
-    public void setSpeed(int speed) {
-        this.speed = speed;
-    }
-
-    /**
-     * Retourne la vitesse d'exécution du jeu.
-     * 
-     * @return La vitesse d'exécution.
-     */
-    public int getSpeed() {
-        return speed;
-    }
-
-    /**
-     * Retourne le visiteur actuel utilisé pour effectuer des actions sur les cellules.
-     * 
-     * @return Le visiteur actuel.
-     */
-    public Visiteur getV() {
-        return v;
-    }
-
-    /**
-     * Définit un nouveau visiteur pour effectuer des actions sur les cellules.
-     * 
-     * @param v Le visiteur à définir.
-     */
-    public void setV(Visiteur v) {
-        this.v = v;
-    }
 }

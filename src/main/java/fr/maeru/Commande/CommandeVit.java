@@ -28,8 +28,6 @@ public class CommandeVit extends Commande {
 
     /**
      * Exécute l'action "vit" sur la cellule spécifiée.
-     * Cette méthode déclenche l'action de vie de la cellule, permettant ainsi
-     * à la cellule de passer à l'état vivant.
      */
     public void executer() {
         cel.vit();

@@ -27,9 +27,7 @@ public interface Observable {
     public void detacheObservateur(Observateur o);
     
     /**
-     * Notifie tous les observateurs attachés de l'objet observable que l'état a changé.
-     * Cette méthode est appelée lorsque l'objet observé subit un changement qui doit
-     * être communiqué aux observateurs.
+     * Notifie tout les observateurs attachés de l'objet observable que l'état a changé.
      */
     public void notifieObservateur();
 }

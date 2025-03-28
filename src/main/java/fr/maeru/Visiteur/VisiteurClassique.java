@@ -5,7 +5,7 @@ import fr.maeru.Cellule.*;
 import fr.maeru.Commande.*;
 
 /**
- * Classe représentant un visiteur qui applique les règles classiques du jeu de la vie.
+ * Classe représentant un visiteur qui applique les règles classiques (Conway) du jeu de la vie.
  * Ce visiteur détermine si une cellule doit vivre ou mourir en fonction de son nombre de voisins vivants.
  * Les règles classiques sont appliquées à la cellule en question : une cellule morte avec exactement 3 voisins vivants devient vivante,
  * et une cellule vivante avec moins de 2 voisins ou plus de 3 voisins meurt.

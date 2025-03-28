@@ -1,0 +1,80 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+
+\title{Projet : Jeu de la Vie en Java et Swing}
+\author{Maelig Pesantez}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{Résumé du projet}
+Ce projet consiste en une implémentation du \textit{Jeu de la Vie} en Java et Swing, développé dans le cadre du cours de \textit{Design Patterns} de la troisième année de licence en Informatique à l'Université du Mans. Le jeu utilise plusieurs Design Patterns afin de rendre son architecture modulaire, extensible et maintenable. La simulation présente plusieurs modes de jeu ainsi que des fonctionnalités permettant de contrôler l'évolution des générations.
+
+\section*{Objectifs et Design Patterns appliqués}
+L'architecture du jeu repose sur des principes de conception orientée objet et sur l'application de plusieurs Design Patterns. Voici les principaux Design Patterns utilisés dans le projet :
+
+\subsection*{1. Singleton}
+Le design pattern \textit{Singleton} est utilisé pour la gestion des cellules. Chaque cellule de la grille est instanciée une seule fois et partagée à travers l'application. Cela garantit que les instances de cellules sont uniques et permet de mieux gérer la mémoire.
+
+\subsection*{2. Observer / Observable}
+Le pattern \textit{Observer / Observable} est utilisé pour la gestion des événements dans l'interface graphique. Le jeu et l'interface utilisateur (UI) sont séparés grâce à ce pattern. L'interface observe les changements dans le jeu (état des cellules) et est mise à jour automatiquement lorsque l'état du jeu change. Par exemple, le composant \textit{JeuDeLaVieUI} est un observateur qui reçoit les mises à jour de l'état du jeu.
+
+\subsection*{3. Visitor}
+Le pattern \textit{Visitor} est utilisé pour implémenter les différents modes de jeu. Cela permet d'ajouter de nouveaux types de règles (comme "High Life" ou "Replicator") sans modifier les classes existantes. Chaque mode de jeu est représenté par une classe qui visite et modifie l'état du jeu en fonction de règles spécifiques.
+
+\section*{Fonctionnalités ajoutées}
+Le projet comprend plusieurs fonctionnalités interactives permettant à l'utilisateur de contrôler et personnaliser la simulation. Les principales fonctionnalités ajoutées sont :
+
+\subsection*{1. Bouton Pause/Reprendre}
+Un bouton permet à l'utilisateur de mettre la simulation en pause ou de la reprendre, offrant ainsi un contrôle total sur l'évolution du jeu.
+
+\subsection*{2. Bouton Génération suivante}
+Le bouton \textit{Next Gen} permet à l'utilisateur de faire avancer la simulation d'une seule génération à la fois, permettant ainsi une exploration manuelle des évolutions.
+
+\subsection*{3. Curseur de vitesse}
+Un curseur permet à l'utilisateur de régler la vitesse d'évolution de la simulation en temps réel. Cela permet de visualiser rapidement les changements tout en ayant la possibilité de ralentir ou d'accélérer le jeu.
+
+\subsection*{4. Menu déroulant pour les modes de jeu}
+L'utilisateur peut choisir entre plusieurs règles du jeu, telles que :
+\begin{itemize}
+    \item Classique
+    \item High Life
+    \item Day and Night
+    \item Diamoeba
+    \item Replicator
+    \item Life Without Death
+    \item Chaos
+\end{itemize}
+
+\subsection*{5. Menu déroulant pour les patterns}
+Un autre menu permet de sélectionner parmi plusieurs motifs (patterns) prédéfinis qui initialisent la grille avec des configurations de cellules spécifiques. Les patterns disponibles sont :
+\begin{itemize}
+    \item Glider
+    \item Gosper Glider Gun
+    \item Planeur
+    \item Canon
+    \item Labyrinthe (Replicator)
+    \item Explosif (Replicator)
+    \item Replicator
+\end{itemize}
+
+\section*{Structure du projet}
+La structure du projet est organisée de manière à séparer les différentes parties du code (jeu, interface graphique, gestion des tests, etc.). Voici un aperçu de la structure du projet :
+
+\begin{verbatim}
+JavaGameOfLife/
+|-- src/                 # Code source
+|   |-- main/            # Dossier principal du jeu
+|   |-- test/            # Dossier des tests
+|-- pom.xml              # Configuration Maven
+|-- README.md            # Documentation du projet
+|-- .gitignore           # Fichiers ignorés
+\end{verbatim}
+\end{document}

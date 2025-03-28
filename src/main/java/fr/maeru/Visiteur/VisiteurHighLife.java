@@ -5,8 +5,8 @@ import fr.maeru.Cellule.*;
 import fr.maeru.Commande.*;
 
 /**
- * Classe représentant un visiteur avec la règle du jeu "HighLife" pour le jeu de la vie.
- * La règle "HighLife" modifie le comportement des cellules comme suit :
+ * Classe représentant un visiteur avec la règle du jeu HighLife pour le jeu de la vie.
+ * Les règles HighLife modifie le comportement des cellules comme suit :
  * - Une cellule morte devient vivante si elle a exactement 3 ou 6 voisins vivants.
  * - Une cellule vivante meurt si elle a moins de 2 ou plus de 3 voisins vivants.
  * 

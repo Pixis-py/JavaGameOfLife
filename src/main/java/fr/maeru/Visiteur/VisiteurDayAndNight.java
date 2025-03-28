@@ -5,7 +5,7 @@ import fr.maeru.Cellule.*;
 import fr.maeru.Commande.*;
 
 /**
- * Classe représentant un visiteur qui applique les règles du jeu de la vie "Day and Night".
+ * Classe représentant un visiteur qui applique les règles du jeu de la vie Day and Night.
  * Ce visiteur suit des règles différentes pour déterminer si une cellule doit vivre ou mourir.
  * Les règles sont les suivantes :
  * - Une cellule morte devient vivante si elle a 3, 6 ou 8 voisins vivants.
@@ -26,7 +26,7 @@ public class VisiteurDayAndNight extends Visiteur {
     }
 
     /**
-     * Méthode qui visite une cellule morte et applique les règles "Day and Night".
+     * Méthode qui visite une cellule morte et applique les règles Day and Night.
      * Si une cellule morte a 3, 6 ou 8 voisins vivants, elle devient vivante.
      * 
      * @param c La cellule morte à visiter et à potentiellement réveiller.
@@ -40,7 +40,7 @@ public class VisiteurDayAndNight extends Visiteur {
     }
 
     /**
-     * Méthode qui visite une cellule vivante et applique les règles "Day and Night".
+     * Méthode qui visite une cellule vivante et applique les règles Day and Night.
      * Si une cellule vivante a moins de 2 voisins vivants ou plus de 3 voisins vivants, elle meurt.
      * 
      * @param c La cellule vivante à visiter et à potentiellement faire mourir.

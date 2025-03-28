@@ -87,7 +87,7 @@ public class Cellule {
 
     /**
      * Permet à un visiteur d'interagir avec la cellule. Cette méthode utilise le design pattern
-     * **Visitor** pour déléguer l'interaction avec l'état de la cellule.
+     * Visitor pour déléguer l'interaction avec l'état de la cellule.
      * 
      * @param v Le visiteur qui va interagir avec la cellule.
      */
